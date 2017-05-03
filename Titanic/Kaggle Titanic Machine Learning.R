@@ -10,7 +10,7 @@ test <- read.csv("test.csv")
 #do a quick look up on the dataset's framework
 str(train)
 
-#do a qucik statistical summary on key varibles
+#do a qucik statistical summary on key variables
 summary(train$Sex)
 table(train$Survived)
 
