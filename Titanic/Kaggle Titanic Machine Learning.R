@@ -1,4 +1,7 @@
-# load necessary packages (decision trees?)
+#PART 1: load packages and datasets; Do a check-up on the data
+
+# load necessary packages 
+library('dplyr')
 
 #set working directory
 setwd("/Users/yanjunchen/Desktop/Kaggle/Titanic")
@@ -7,7 +10,7 @@ setwd("/Users/yanjunchen/Desktop/Kaggle/Titanic")
 train <- read.csv("train.csv")
 test <- read.csv("test.csv")
 
-#do a quick look up on the dataset's framework
+#do a quick look-up on the dataset's framework
 str(train)
 
 #do a qucik statistical summary on key variables
