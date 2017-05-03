@@ -14,3 +14,9 @@ str(train)
 summary(train$Sex)
 table(train$Survived)
 
+#ok, let't combine the training and testing datasets
+combined <-bind_rows(train,test)
+
+#do another look-up on the combined file
+str(combined)
+summary(combined)
