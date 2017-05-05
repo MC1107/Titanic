@@ -29,6 +29,7 @@ Welcome to my Titanic-Kaggle project (In R)
 All data is from [Kaggle](https://www.kaggle.com/c/titanic/data)
 
 1.1  Download Packages Import Datasets & Check-up
+
 download packages for data manipulation & visualiztion 
 Import datasets from the associated directory. Also did a simple check-up on the variables and their class types. 
 
