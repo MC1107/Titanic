@@ -18,7 +18,10 @@ str(train)
 summary(train$Sex)
 table(train$Survived)
 
-# to check if the names(headers) of the training & testing datasets are the same
+# So, it sees that more people died(549) than survived(342). Can/Shall we expect similir results
+#in the testing dataset?
+
+# check if the names(headers) of the training & testing datasets are the same
 names(train)
 names(test)
 
@@ -36,4 +39,15 @@ combined <-bind_rows(train,test)
 str(combined)
 summary(combined)
 
+
 # 2.1: 
+
+#check missing values in Age:
+table(is.na(train$Age))
+#wow, there are 177 missing values. Let's replace them with the median values of Age
+
+median.age <- median(train$Age, na.rm = TRUE) #(median = 28)
+#replce all NAs with the median
+train$Age[is.na(train$Age)] <- median.age
+
+
