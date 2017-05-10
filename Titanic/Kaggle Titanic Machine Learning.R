@@ -3,6 +3,7 @@
 # load necessary packages 
 library('dplyr') #data manipulation
 library('ggplot2') #visualization
+library('rpart') #regression trees
 
 #set working directory
 setwd("/Users/yanjunchen/Desktop/Kaggle/Titanic")
@@ -40,14 +41,34 @@ str(combined)
 summary(combined)
 
 
-# 2.1: 
+# 1.1: Data Prep
 
 #check missing values in Age:
-table(is.na(train$Age))
-#wow, there are 177 missing values. Let's replace them with the median values of Age
+table(is.na(combined$Age))
+#there are a lot of missing values. Let's replace them with the median values of Age
+#(deleting might not be a good idea since the dataset is already small)
 
-median.age <- median(train$Age, na.rm = TRUE) #(median = 28)
+median.age <- median(combined$Age,na.rm = TRUE) #(median = 28)
 #replce all NAs with the median
-train$Age[is.na(train$Age)] <- median.age
+combined$Age[is.na(combined$Age)] <- median.age
 
+#same rules applied to other 2 variables(Fare & Embared) that have missing values: 
+median.fare <- median(combined$Fare,na.rm = TRUE)
+combined$Fare[is.na(combined$Fare)] <- median.fare
+
+
+#way more people(mode) are embarking from S, let's just assign the 2 missing values to "S"
+
+
+combined[combined$Embarked=='',"Embarked"] <- "S"
+
+# 2.1 Exploratory data analysis (EAD)
+# Use common senese and intuitions: due to "women and children first" code, 
+# I'm gueesing Age and Sex might have an influence on the survival.
+
+# Let's do some EAD on Age vs. Survial 
+
+decision_tree <- ctree(
+  Survived ~ Pclass + Parch + Ticket + Cabin + Age + Embarked + Sex, 
+  data=train)
 
