@@ -6,10 +6,11 @@ Welcome to my Titanic-Kaggle project (In R)
 1. Introduction
 
    1.1. Data Checkup
+   1.2. Data Prep - Replacing Missing Data
 
 2. Data 
       
-   2.1 Model Building with the Testing Dataset
+   2.1 EDA
    
    2.2
 
@@ -33,10 +34,19 @@ All data is from [Kaggle](https://www.kaggle.com/c/titanic/data)
 download packages for data manipulation & visualiztion 
 Import datasets from the associated directory. Also did a simple check-up on the variables and their class types. 
 
+
+1.2 Data Prep/Cleaning
+
+replace missing data in the three variables - age, fare & embarked 
+
 2.1
 
 ---
 
 
+
+Bugs & Questions:
+
+1. Based on what standrads should I choose whether to use median/mode/random sample for missing data replacement?
 
 
