@@ -3,7 +3,10 @@
 # load necessary packages 
 library('dplyr') #data manipulation
 library('ggplot2') #visualization
+library('ggthemes')#visualization
 library('rpart') #regression trees
+
+
 
 #set working directory
 setwd("/Users/yanjunchen/Desktop/Kaggle/Titanic")
@@ -41,7 +44,7 @@ str(combined)
 summary(combined)
 
 
-# 1.1: Data Prep
+# 1.2: Data Prep
 
 #check missing values in Age:
 table(is.na(combined$Age))
@@ -52,7 +55,7 @@ median.age <- median(combined$Age,na.rm = TRUE) #(median = 28)
 #replce all NAs with the median
 combined$Age[is.na(combined$Age)] <- median.age
 
-#same rules applied to other 2 variables(Fare & Embared) that have missing values: 
+#same rules applied to other 2 variables(Fare & Embarked) that have missing values: 
 median.fare <- median(combined$Fare,na.rm = TRUE)
 combined$Fare[is.na(combined$Fare)] <- median.fare
 
@@ -66,9 +69,29 @@ combined[combined$Embarked=='',"Embarked"] <- "S"
 # Use common senese and intuitions: due to "women and children first" code, 
 # I'm gueesing Age and Sex might have an influence on the survival.
 
-# Let's do some EAD on Age vs. Survial 
+# Let's do some EAD 
+# 1. Age vs. Survial: 
 
-decision_tree <- ctree(
-  Survived ~ Pclass + Parch + Ticket + Cabin + Age + Embarked + Sex, 
-  data=train)
+ggplot(combined[1:891,], aes(Age, fill = factor(Survived))) + geom_histogram() + xlab("Age") + ylab("Count")
+
+
+#2. Sex vs Survival using the taaply function:
+
+ggplot(combined[1:891,], aes(Sex, fill = factor(Survived))) + geom_bar(stat = "count", position = 'dodge') +
+  xlab("Sex") + ylab("Count")
+
+tapply(combined[1:891,]$Survived, combined[1:891,]$Sex, mean)
+
+
+
+
+# Split the data back into training and testing
+#train <- combined[1:891,]
+#test <- combined[892:1309,]
+
+
+#decision_tree <- ctree(
+ # Survived ~ Pclass + Parch + Ticket + Cabin + Age + Embarked + Sex, 
+ # data=train)
+
 
