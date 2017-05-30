@@ -6,8 +6,6 @@ library('ggplot2') #visualization
 library('ggthemes')#visualization
 library('rpart') #regression trees
 
-
-
 #set working directory
 setwd("/Users/yanjunchen/Desktop/Kaggle/Titanic")
 
@@ -65,23 +63,36 @@ combined$Fare[is.na(combined$Fare)] <- median.fare
 
 combined[combined$Embarked=='',"Embarked"] <- "S"
 
-# 2.1 Exploratory data analysis (EAD)
+# 2 Exploratory data analysis (EAD)
 # Use common senese and intuitions: due to "women and children first" code, 
 # I'm gueesing Age and Sex might have an influence on the survival.
 
 # Let's do some EAD 
-# 1. Age vs. Survial: 
+# 2.1. Age vs. Survial: 
 
 ggplot(combined[1:891,], aes(Age, fill = factor(Survived))) + geom_histogram() + xlab("Age") + ylab("Count")
 
 
-#2. Sex vs Survival using the taaply function:
+#2.2. Sex vs Survival using the taaply function:
 
 ggplot(combined[1:891,], aes(Sex, fill = factor(Survived))) + geom_bar(stat = "count", position = 'dodge') +
   xlab("Sex") + ylab("Count")
 
 tapply(combined[1:891,]$Survived, combined[1:891,]$Sex, mean)
+#female      male 
+#0.7420382 0.1889081 
 
+#seems that females has a larger survival rate
+
+#2.3. Pclass vs Survival 
+
+ggplot(combined[1:891,], aes(Pclass,fill = factor(Survived))) + geom_bar(stat = "count", position = 'dodge')
+tapply(combined[1:891,]$Survived,train$Pclass,mean)
+#seems that in terms of survivial rate, class 1>2>3 
+
+#2.4. Family size vs Survival
+family <- combined$SibSp + combined$Parch
+#*BUG tapply(combined[1:891,]$Survived,combined[1:891,]$family,mean)
 
 
 
