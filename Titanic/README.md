@@ -8,11 +8,17 @@ Welcome to my Titanic-Kaggle project (In R)
    1.1. Data Checkup
    1.2. Data Prep - Replacing Missing Data
 
-2. Data 
+2. EAD
       
-   2.1 EDA
+   2.1
    
    2.2
+
+   2.3
+
+   2.4
+
+
 
 3. Data
 
@@ -43,14 +49,10 @@ Replace missing data in the three variables - age, fare & embarked
 
 Exploratory data analysis: to check variable of interest's relationship with the survival rate
 
-2.1 
-Age vs. Survial 
-2.2
-Sex vs Survival
-2.3
-Pclass vs Survival 
-2.4
-Family size vs Survival
+2.1 Age vs. Survial 
+2.2 Sex vs Survival
+2.3 Pclass vs Survival 
+2.4 Family size vs Survival
 ---
 
 
