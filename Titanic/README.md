@@ -10,7 +10,7 @@ Welcome to my Titanic-Kaggle project (In R)
 
 2. EAD   
    
-### Introduction: This is my first Kaggle challenge - I am new to machine learning so any comments are welcome! I'm taking on this challenge because it is specifically designed to cultivate my skills in:
+### Introduction: This is my first Kaggle challenge -  I'm taking on this challenge because it is specifically designed to cultivate my skills in:
 - binary classification
 - basic machine learning R skills
 
