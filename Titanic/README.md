@@ -37,12 +37,4 @@ Exploratory data analysis: to check variable of interest's relationship with the
 ---
 
 
-Bugs & Questions:
-
-1. Based on what standards should I choose whether to use median/mode/random sample for missing data replacement?
-
-2. For EDA, what is the success measurement?(how fo I know the right time to stop) Do I have to do EDA on all indepedent variables? Or just variables of interest? 
-
-3. Difference between Combined[1:891] and train?
-
 
